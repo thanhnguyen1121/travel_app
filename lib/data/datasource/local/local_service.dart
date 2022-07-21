@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter_application/data/dto/authentication_dto.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -9,7 +10,17 @@ class LocalService {
   //NOTE: List key not delete when user logout
   final List<String> keyExcludes = [];
 
+  final String kShowOnboard = "SHOW_ON_BOARD";
+
   final SharedPreferences sharedPreferences = GetIt.instance.get();
+
+  bool isShowOnBoard() {
+    return sharedPreferences.containsKey(kShowOnboard);
+  }
+
+  Future savaShowOnBoard(bool value) async {
+    await sharedPreferences.setBool(kShowOnboard, value);
+  }
 
   bool isAuthorized() {
     return sharedPreferences.containsKey(kKeyAuth);

@@ -42,6 +42,16 @@ dependencies:
   # Collections and utilities functions and classes related to collections.
   collection: 1.16.0
 
+  smooth_page_indicator: 1.0.0+2
+
+  google_fonts: 3.0.1
+
+  readmore: ^2.2.0
+
+  flutter_lorem: ^2.0.0
+
+  expandable_text: ^2.3.0
+
 
 dev_dependencies:
   flutter_test:
@@ -49,7 +59,7 @@ dev_dependencies:
   build_runner:
   json_serializable:
   freezed:
-  flutter_lints: ^1.0.4
+  flutter_lints:
   flutter_launcher_icons: ^0.9.2
   flutter_native_splash: ^2.1.0
 
@@ -64,5 +74,42 @@ flutter:
   uses-material-design: true
   assets:
     - assets/icons/
+    - assets/images/
+
+  fonts:
+    - family: geometric_415
+      fonts:
+        - asset: assets/fonts/geometric_415_black_bt.ttf
+    - family: gill_sans_mt
+      fonts:
+        - asset: assets/fonts/gill_sans_mt.ttf
+    - family: sf_ui_display
+      fonts:
+        - asset: assets/fonts/sf_ui_display_black.otf
+          weight: 900
+        - asset: assets/fonts/sf_ui_display_heavy.otf
+          weight: 800
+        - asset: assets/fonts/sf_ui_display_bold.otf
+          weight: 600
+        - asset: assets/fonts/sf_ui_display_semibold.otf
+          weight: 500
+        - asset: assets/fonts/sf_ui_display_medium.otf
+          weight: 400
+        - asset: assets/fonts/sf_ui_display_light.otf
+          weight: 300
+        - asset: assets/fonts/sf_ui_display_thin.otf
+          weight: 200
+        - asset: assets/fonts/sf_ui_display_ultralight.otf
+          weight: 100
+
+
+
 flutter_intl:
   enabled: true
+
+flutter_gen:
+  output: lib/gen/
+  line_length: 80
+
+  integrations:
+    flutter_svg: true

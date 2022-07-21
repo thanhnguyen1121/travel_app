@@ -32,8 +32,8 @@ class AuthBloc extends Cubit<AuthState> {
     emit(AuthState.authorized(profile));
   }
 
-  Future login(String username, String password) async {
-    final auth = await _authRepository.login(username, password);
+  Future signIn({required String email, required String password}) async {
+    final auth = await _authRepository.login(email, password);
     GetIt.instance.get<Oauth2Manager<AuthenticationDto>>().add(auth);
     await _authRepository.profile();
   }
@@ -42,4 +42,10 @@ class AuthBloc extends Cubit<AuthState> {
     await _authRepository.logout();
     GetIt.instance.get<Oauth2Manager<AuthenticationDto>>().add(null);
   }
+
+  void signInWithFaceBook() {}
+
+  void signInWithInstagram() {}
+
+  void signInWithTwitter() {}
 }

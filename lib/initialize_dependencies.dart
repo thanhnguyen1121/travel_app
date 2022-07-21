@@ -1,6 +1,8 @@
 import 'package:auth_nav/auth_nav.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_application/ui/blocs/blocs.dart';
+import 'package:flutter_application/ui/blocs/home/home_bloc.dart';
+import 'package:flutter_application/ui/blocs/theme/theme_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:oauth2_dio/oauth2_dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -48,7 +50,11 @@ Future initializeDependencies() async {
   );
   //endregion
 
+  GetIt.instance.registerSingleton(ThemeBloc());
+
   GetIt.instance.registerSingleton(AuthNavigationBloc());
 
   GetIt.instance.registerSingleton(AuthBloc());
+
+  GetIt.instance.registerSingleton(HomeBloc());
 }
