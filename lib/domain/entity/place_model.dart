@@ -6,6 +6,7 @@ abstract class PlaceModel {
   double? placeStar;
   String? placeLocation;
   int? placeCountLike;
+  DateTime? placeSchedule;
 
   PlaceModel(
       {required this.id,
@@ -14,5 +15,6 @@ abstract class PlaceModel {
       this.placeTitle,
       this.placeStar,
       this.placeLocation,
-      this.placeCountLike});
+      this.placeCountLike,
+      this.placeSchedule});
 }

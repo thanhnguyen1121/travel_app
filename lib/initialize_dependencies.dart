@@ -11,6 +11,7 @@ import 'data/datasource/local/local_service.dart';
 import 'data/dto/dto.dart';
 import 'data/repositories/repositories.dart';
 import 'env.dart';
+import 'ui/blocs/calendar/calendar_bloc.dart';
 
 Future initializeDependencies() async {
   Dio dio = Dio(BaseOptions(baseUrl: Env.instance.baseURL));
@@ -57,4 +58,6 @@ Future initializeDependencies() async {
   GetIt.instance.registerSingleton(AuthBloc());
 
   GetIt.instance.registerSingleton(HomeBloc());
+
+  GetIt.instance.registerSingleton(CalendarBloc());
 }

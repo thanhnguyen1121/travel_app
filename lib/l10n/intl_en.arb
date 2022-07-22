@@ -50,6 +50,8 @@
   "best_destination": "Best Destination",
   "view_all": "View all",
   "no_data": "No data",
-  "default_image": "assets/images/img_home_demo_one.png"
+  "default_image": "assets/images/img_home_demo_one.png",
+  "my_schedule": "My Schedule",
+  "schedule": "Schedule"
 
 }

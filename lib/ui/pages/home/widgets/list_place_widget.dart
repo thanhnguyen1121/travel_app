@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/constants/app_colors.dart';
 import 'package:flutter_application/domain/entity/place_model.dart';
 import 'package:flutter_application/generated/l10n.dart';
 import 'package:flutter_application/ui/blocs/home/home_bloc.dart';
 import 'package:flutter_application/ui/blocs/home/home_state.dart';
 import 'package:flutter_application/ui/pages/home/place_detail/place_detail_page.dart';
 import 'package:flutter_application/ui/pages/home/widgets/place_card_widget.dart';
-import 'package:flutter_application/utils/context_extension.dart';
+import 'package:flutter_application/ui/widgets/app_widgets/app_title_and_view_all_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ListPlaceWidget extends StatefulWidget {
@@ -57,21 +56,8 @@ class _ListPlaceWidgetState extends State<ListPlaceWidget>
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  S.current.best_destination,
-                  style: context.textTheme.bodyText1
-                      ?.copyWith(fontSize: 20, fontWeight: FontWeight.w600),
-                ),
-                const Spacer(),
-                Text(
-                  S.current.view_all,
-                  style: context.textTheme.subtitle2?.copyWith(
-                      color: AppColors.h0D6EFD, fontWeight: FontWeight.w300),
-                )
-              ],
+            child: AppTitleAndViewAllWidget(
+              title: S.current.best_destination,
             ),
           ),
           const SizedBox(

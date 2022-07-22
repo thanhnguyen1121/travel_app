@@ -26,9 +26,10 @@ class BottomNavigation extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-              color: colorSelected.withOpacity(0.1),
-              blurRadius: 2,
-              spreadRadius: 2)
+            color: context.colorScheme.tertiary,
+            offset: const Offset(-6, 0),
+            blurRadius: 16,
+          )
         ],
         color: context.colorScheme.secondaryContainer,
       ),

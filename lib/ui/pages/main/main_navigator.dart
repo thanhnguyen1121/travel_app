@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/data/dto/place_dto.dart';
+import 'package:flutter_application/ui/blocs/calendar/calendar_bloc.dart';
 import 'package:flutter_application/ui/blocs/home/home_bloc.dart';
 import 'package:flutter_application/ui/pages/home/home_page.dart';
 import 'package:flutter_application/ui/pages/home/place_detail/place_detail_page.dart';
@@ -25,6 +26,7 @@ class _MainNavigatorState extends State<MainNavigator> {
     return MultiBlocProvider(
       providers: [
         BlocProvider.value(value: GetIt.instance.get<HomeBloc>()),
+        BlocProvider.value(value: GetIt.instance.get<CalendarBloc>()),
       ],
       child: NavigatorSupport(
         initialRoute: MainPage.routerName,

@@ -19,14 +19,17 @@ class PlaceDto extends PlaceModel {
     placeStar,
     placeLocation,
     placeCountLike,
+    placeSchedule,
   }) : super(
-            id: id,
-            placeUrl: placeUrl,
-            placeTag: placeTag,
-            placeTitle: placeTitle,
-            placeStar: placeStar,
-            placeLocation: placeLocation,
-            placeCountLike: placeCountLike);
+          id: id,
+          placeUrl: placeUrl,
+          placeTag: placeTag,
+          placeTitle: placeTitle,
+          placeStar: placeStar,
+          placeLocation: placeLocation,
+          placeCountLike: placeCountLike,
+          placeSchedule: placeSchedule,
+        );
 
   factory PlaceDto.fromJson(Map<String, dynamic> json) =>
       _$PlaceDtoFromJson(json);

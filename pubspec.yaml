@@ -52,6 +52,8 @@ dependencies:
 
   expandable_text: ^2.3.0
 
+  intl: ^0.17.0
+
 
 dev_dependencies:
   flutter_test:

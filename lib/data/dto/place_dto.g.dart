@@ -18,6 +18,7 @@ PlaceDto _$PlaceDtoFromJson(Map<String, dynamic> json) => PlaceDto(
       placeStar: json['placeStar'],
       placeLocation: json['placeLocation'],
       placeCountLike: json['placeCountLike'],
+      placeSchedule: json['placeSchedule'],
     );
 
 Map<String, dynamic> _$PlaceDtoToJson(PlaceDto instance) => <String, dynamic>{
@@ -28,6 +29,7 @@ Map<String, dynamic> _$PlaceDtoToJson(PlaceDto instance) => <String, dynamic>{
       'placeStar': instance.placeStar,
       'placeLocation': instance.placeLocation,
       'placeCountLike': instance.placeCountLike,
+      'placeSchedule': instance.placeSchedule?.toIso8601String(),
       'placeViewImage': instance.placeViewImage,
       'placeDescription': instance.placeDescription,
     };

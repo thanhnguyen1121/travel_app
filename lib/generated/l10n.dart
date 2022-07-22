@@ -569,6 +569,26 @@ class S {
       args: [],
     );
   }
+
+  /// `My Schedule`
+  String get my_schedule {
+    return Intl.message(
+      'My Schedule',
+      name: 'my_schedule',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Schedule`
+  String get schedule {
+    return Intl.message(
+      'Schedule',
+      name: 'schedule',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

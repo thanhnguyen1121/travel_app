@@ -50,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "home_page": MessageLookupByLibrary.simpleMessage("Home Page"),
         "messages": MessageLookupByLibrary.simpleMessage("Messages"),
+        "my_schedule": MessageLookupByLibrary.simpleMessage("My Schedule"),
         "no_data": MessageLookupByLibrary.simpleMessage("No data"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "onboard_get_started":
@@ -92,6 +93,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Resend code to"),
         "reset_password":
             MessageLookupByLibrary.simpleMessage("Reset password"),
+        "schedule": MessageLookupByLibrary.simpleMessage("Schedule"),
         "sign_in": MessageLookupByLibrary.simpleMessage("Sign In"),
         "sign_in_now": MessageLookupByLibrary.simpleMessage("Sign in now"),
         "sign_in_now_description": MessageLookupByLibrary.simpleMessage(

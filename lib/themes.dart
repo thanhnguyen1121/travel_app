@@ -6,11 +6,14 @@ import 'gen/fonts.gen.dart';
 ThemeData light() {
   return ThemeData.light().copyWith(
     backgroundColor: Colors.white,
+    canvasColor: Colors.transparent,
     colorScheme: ThemeData.light().colorScheme.copyWith(
           secondary: AppColors.h1B1E28,
           primary: AppColors.hE8E8F3,
           primaryContainer: AppColors.hF7F7F9,
           secondaryContainer: Colors.white,
+          onSecondaryContainer: AppColors.hB4BCC9.withOpacity(0.16),
+          tertiary: AppColors.hAFB8C6.withOpacity(0.12),
         ),
     textTheme: const TextTheme().copyWith(
       headline3: ThemeData.light().textTheme.headline5?.copyWith(
@@ -100,12 +103,15 @@ ThemeData light() {
 
 ThemeData dark() {
   return ThemeData.dark().copyWith(
-    backgroundColor: AppColors.h16181F,
+    backgroundColor: AppColors.h303030,
+    canvasColor: Colors.transparent,
     colorScheme: ThemeData.light().colorScheme.copyWith(
         secondary: Colors.white,
         primary: AppColors.h20232D,
         primaryContainer: AppColors.h20232D,
-        secondaryContainer: AppColors.h20232D),
+        secondaryContainer: AppColors.h20232D,
+        onSecondaryContainer: Colors.black.withOpacity(0.25),
+        tertiary: AppColors.hAFB8C6.withOpacity(0.12)),
     textTheme: const TextTheme().copyWith(
       headline3: ThemeData.light().textTheme.headline5?.copyWith(
             color: Colors.white,
