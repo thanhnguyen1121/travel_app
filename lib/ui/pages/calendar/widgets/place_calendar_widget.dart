@@ -7,101 +7,111 @@ import 'package:intl/intl.dart';
 
 class PlaceCalendarWidget extends StatelessWidget {
   final PlaceModel placeModel;
+  final VoidCallback? onTap;
 
-  const PlaceCalendarWidget({Key? key, required this.placeModel})
+  const PlaceCalendarWidget({Key? key, required this.placeModel, this.onTap})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        color: context.colorScheme.secondaryContainer,
-        borderRadius: const BorderRadius.all(Radius.circular(16)),
-      ),
-      child: Row(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: Image.asset(
-              placeModel.placeUrl ?? S.current.default_image,
-              width: 80,
-              height: 80,
-              fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () {
+        onTap?.call();
+      },
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: context.colorScheme.secondaryContainer,
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
+        ),
+        child: Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Hero(
+                tag: placeModel.id.toString(),
+                child: Image.asset(
+                  placeModel.placeUrl ?? S.current.default_image,
+                  width: 80,
+                  height: 80,
+                  fit: BoxFit.cover,
+                ),
+                transitionOnUserGestures: false,
+              ),
             ),
-          ),
-          const SizedBox(
-            width: 16,
-          ),
-          Expanded(
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Assets.icons.icCalendar.svg(width: 16, height: 16),
-                    const SizedBox(
-                      width: 6,
-                    ),
-                    Expanded(
-                      child: Text(
-                        DateFormat("dd MMMM yyyy")
-                            .format(placeModel.placeSchedule ?? DateTime.now()),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                        style:
-                            context.textTheme.bodyText2?.copyWith(fontSize: 13),
-                      ),
-                    )
-                  ],
-                ),
-                const SizedBox(
-                  height: 6,
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        placeModel.placeTitle ?? S.current.no_data,
-                        style: context.textTheme.bodyText1,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                      ),
-                    ),
-                    const Spacer(),
-                    const Icon(
-                      Icons.arrow_forward_ios,
-                      size: 20,
-                      color: AppColors.h7D848D,
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 6,
-                ),
-                Row(
-                  children: [
-                    Assets.icons.icLocation.svg(width: 16, height: 16),
-                    const SizedBox(
-                      width: 6,
-                    ),
-                    Expanded(
-                      child: Text(
-                        placeModel.placeLocation ?? S.current.no_data,
-                        style:
-                            context.textTheme.bodyText2?.copyWith(fontSize: 13),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 24,
-                    )
-                  ],
-                )
-              ],
+            const SizedBox(
+              width: 16,
             ),
-          )
-        ],
+            Expanded(
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Assets.icons.icCalendar.svg(width: 16, height: 16),
+                      const SizedBox(
+                        width: 6,
+                      ),
+                      Expanded(
+                        child: Text(
+                          DateFormat("dd MMMM yyyy").format(
+                              placeModel.placeSchedule ?? DateTime.now()),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                          style: context.textTheme.bodyText2
+                              ?.copyWith(fontSize: 13),
+                        ),
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 6,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          placeModel.placeTitle ?? S.current.no_data,
+                          style: context.textTheme.bodyText1,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),
+                      ),
+                      const Spacer(),
+                      const Icon(
+                        Icons.arrow_forward_ios,
+                        size: 20,
+                        color: AppColors.h7D848D,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 6,
+                  ),
+                  Row(
+                    children: [
+                      Assets.icons.icLocation.svg(width: 16, height: 16),
+                      const SizedBox(
+                        width: 6,
+                      ),
+                      Expanded(
+                        child: Text(
+                          placeModel.placeLocation ?? S.current.no_data,
+                          style: context.textTheme.bodyText2
+                              ?.copyWith(fontSize: 13),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 24,
+                      )
+                    ],
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

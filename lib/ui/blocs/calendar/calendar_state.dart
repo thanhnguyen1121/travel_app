@@ -5,7 +5,8 @@ part 'calendar_state.freezed.dart';
 
 @freezed
 abstract class CalendarState with _$CalendarState {
-  const factory CalendarState(Map<String, PlaceModel> placeList) =
+  const factory CalendarState(
+          Map<String, PlaceModel> placeList, bool insideLoading) =
       CalendarStateData;
 
   const factory CalendarState.loading() = CalendarStateLoading;

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/generated/l10n.dart';
 import 'package:flutter_application/ui/widgets/app_widgets/app_title_and_view_all_widget.dart';
 import 'package:flutter_application/utils/context_extension.dart';
 
-import '../../../../generated/l10n.dart';
-
-class HeaderContentCalenderWidget extends SliverPersistentHeaderDelegate {
+class HeaderSearchContentWidget extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
@@ -12,7 +11,8 @@ class HeaderContentCalenderWidget extends SliverPersistentHeaderDelegate {
       color: context.theme.backgroundColor,
       padding: const EdgeInsets.symmetric(horizontal: 24).copyWith(bottom: 16),
       child: AppTitleAndViewAllWidget(
-        title: S.current.my_schedule,
+        title: S.current.search_places,
+        showViewAll: false,
       ),
     );
   }

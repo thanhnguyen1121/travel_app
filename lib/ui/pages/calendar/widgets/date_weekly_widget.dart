@@ -5,13 +5,22 @@ import 'package:intl/intl.dart';
 import 'package:tuple/tuple.dart';
 
 class DateWeeklyWidget extends StatefulWidget {
-  const DateWeeklyWidget({Key? key}) : super(key: key);
+  final ValueChanged<DateTime>? onSelectedTime;
+
+  const DateWeeklyWidget({Key? key, this.onSelectedTime}) : super(key: key);
 
   @override
   _DateWeeklyWidgetState createState() => _DateWeeklyWidgetState();
 }
 
-class _DateWeeklyWidgetState extends State<DateWeeklyWidget> {
+class _DateWeeklyWidgetState extends State<DateWeeklyWidget>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController animationController = AnimationController(
+      vsync: this, duration: const Duration(milliseconds: 1000));
+  late final Animation<Offset> offset =
+      Tween<Offset>(begin: const Offset(-1, 0), end: Offset.zero).animate(
+          CurvedAnimation(parent: animationController, curve: Curves.easeIn));
+
   List<Tuple2<String, DateTime>> weeklyData = [];
   DateTime currentDate = DateTime.now();
   DateTime selectedDate = DateTime.now();
@@ -22,119 +31,134 @@ class _DateWeeklyWidgetState extends State<DateWeeklyWidget> {
     super.initState();
     weeklyData = generateDate(currentDate);
     selectedIndex = currentDate.weekday - 1;
+    repeatOne();
+  }
+
+  Future<void> repeatOne() async {
+    await animationController.forward();
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 148,
-      decoration: BoxDecoration(
-          color: context.colorScheme.secondaryContainer,
-          borderRadius: const BorderRadius.all(
-            Radius.circular(24),
-          ),
-          boxShadow: [
-            BoxShadow(
-                offset: const Offset(0, 4),
-                blurRadius: 4,
-                color: context.colorScheme.onSecondaryContainer)
-          ]),
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Text(
-                DateFormat("dd MMMM").format(selectedDate),
-                style: context.textTheme.bodyText1
-                    ?.copyWith(fontSize: 20, fontWeight: FontWeight.w600),
-              ),
-              const Spacer(),
-              Material(
-                type: MaterialType.transparency,
-                child: InkResponse(
-                  radius: 18,
-                  onTap: () {
-                    _actionClick(isClickNext: false);
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(8),
-                    alignment: Alignment.centerRight,
-                    child: Icon(
-                      Icons.arrow_back_ios,
-                      color: context.colorScheme.secondary,
-                      size: 20,
-                    ),
-                  ),
+    return SlideTransition(
+      position: offset,
+      child: Container(
+        height: 148,
+        decoration: BoxDecoration(
+            color: context.colorScheme.secondaryContainer,
+            borderRadius: const BorderRadius.all(
+              Radius.circular(24),
+            ),
+            boxShadow: [
+              BoxShadow(
+                  offset: const Offset(0, 4),
+                  blurRadius: 4,
+                  color: context.colorScheme.onSecondaryContainer)
+            ]),
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Text(
+                  DateFormat("dd MMMM").format(selectedDate),
+                  style: context.textTheme.bodyText1
+                      ?.copyWith(fontSize: 20, fontWeight: FontWeight.w600),
                 ),
-              ),
-              Material(
-                type: MaterialType.transparency,
-                child: InkResponse(
-                  radius: 18,
-                  onTap: () {
-                    _actionClick(isClickNext: true);
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(8),
-                    child: Icon(
-                      Icons.arrow_forward_ios,
-                      color: context.colorScheme.secondary,
-                      size: 20,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 6,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: weeklyData
-                .asMap()
-                .entries
-                .map(
-                  (e) => GestureDetector(
+                const Spacer(),
+                Material(
+                  type: MaterialType.transparency,
+                  child: InkResponse(
+                    radius: 18,
                     onTap: () {
-                      selectedIndex = e.key;
-                      setState(() {});
+                      _actionClick(isClickNext: false);
                     },
                     child: Container(
-                      width: 44,
-                      decoration: BoxDecoration(
-                        color: selectedIndex == e.key
-                            ? AppColors.h0D6EFD
-                            : Colors.transparent,
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(12),
-                        ),
-                      ),
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                      child: Column(
-                        children: [
-                          Text(
-                            e.value.item1,
-                            style: context.textTheme.bodyText2
-                                ?.copyWith(fontSize: 15),
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            e.value.item2.day.toString(),
-                            style: context.textTheme.bodyText1
-                                ?.copyWith(fontWeight: FontWeight.w600),
-                          )
-                        ],
+                      padding: const EdgeInsets.all(8),
+                      alignment: Alignment.centerRight,
+                      child: Icon(
+                        Icons.arrow_back_ios,
+                        color: context.colorScheme.secondary,
+                        size: 20,
                       ),
                     ),
                   ),
-                )
-                .toList(),
-          )
-        ],
+                ),
+                Material(
+                  type: MaterialType.transparency,
+                  child: InkResponse(
+                    radius: 18,
+                    onTap: () {
+                      _actionClick(isClickNext: true);
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      child: Icon(
+                        Icons.arrow_forward_ios,
+                        color: context.colorScheme.secondary,
+                        size: 20,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 6,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: weeklyData
+                  .asMap()
+                  .entries
+                  .map(
+                    (e) => GestureDetector(
+                      onTap: () {
+                        selectedIndex = e.key;
+                        setState(() {});
+                        widget.onSelectedTime?.call(e.value.item2);
+                      },
+                      child: Container(
+                        width: 44,
+                        decoration: BoxDecoration(
+                          color: selectedIndex == e.key
+                              ? AppColors.h0D6EFD
+                              : Colors.transparent,
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(12),
+                          ),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        child: Column(
+                          children: [
+                            Text(
+                              e.value.item1,
+                              style: context.textTheme.bodyText2
+                                  ?.copyWith(fontSize: 15),
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            Text(
+                              e.value.item2.day.toString(),
+                              style: context.textTheme.bodyText1
+                                  ?.copyWith(fontWeight: FontWeight.w600),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                  .toList(),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -173,8 +197,6 @@ class _DateWeeklyWidgetState extends State<DateWeeklyWidget> {
     );
     for (int i = 0; i < 7; i++) {
       DateTime dateTime = getDate(startDate.add(Duration(days: i)));
-      print(
-          "gen date: $dateTime day of week: ${DateFormat('EEE').format(dateTime)}");
       result.add(Tuple2(DateFormat('EEE').format(dateTime), dateTime));
     }
     return result;

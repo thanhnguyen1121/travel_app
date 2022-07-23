@@ -3,8 +3,8 @@ import 'package:flutter_application/domain/entity/place_model.dart';
 import 'package:flutter_application/generated/l10n.dart';
 import 'package:flutter_application/ui/blocs/home/home_bloc.dart';
 import 'package:flutter_application/ui/blocs/home/home_state.dart';
-import 'package:flutter_application/ui/pages/home/place_detail/place_detail_page.dart';
 import 'package:flutter_application/ui/pages/home/widgets/place_card_widget.dart';
+import 'package:flutter_application/ui/pages/place_detail/place_detail_page.dart';
 import 'package:flutter_application/ui/widgets/app_widgets/app_title_and_view_all_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,7 +18,7 @@ class ListPlaceWidget extends StatefulWidget {
 class _ListPlaceWidgetState extends State<ListPlaceWidget>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller = AnimationController(
-    duration: const Duration(milliseconds: 1500),
+    duration: const Duration(milliseconds: 1000),
     vsync: this,
   )..repeat(reverse: false);
   late final Animation<Offset> _offsetAnimation = Tween<Offset>(
@@ -41,8 +41,8 @@ class _ListPlaceWidgetState extends State<ListPlaceWidget>
 
   @override
   void dispose() {
-    super.dispose();
     _controller.dispose();
+    super.dispose();
   }
 
   @override

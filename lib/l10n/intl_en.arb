@@ -52,6 +52,9 @@
   "no_data": "No data",
   "default_image": "assets/images/img_home_demo_one.png",
   "my_schedule": "My Schedule",
-  "schedule": "Schedule"
+  "schedule": "Schedule",
+  "search": "Search",
+  "cancel": "Cancel",
+  "search_places": "Search Places"
 
 }

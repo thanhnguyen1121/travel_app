@@ -49,6 +49,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_message.svg
   SvgGenImage get icMessage => const SvgGenImage('assets/icons/ic_message.svg');
 
+  /// File path: assets/icons/ic_microphone.svg
+  SvgGenImage get icMicrophone =>
+      const SvgGenImage('assets/icons/ic_microphone.svg');
+
   /// File path: assets/icons/ic_notication.svg
   SvgGenImage get icNotication =>
       const SvgGenImage('assets/icons/ic_notication.svg');

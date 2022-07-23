@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "best_destination":
             MessageLookupByLibrary.simpleMessage("Best Destination"),
         "calendar": MessageLookupByLibrary.simpleMessage("Calendar"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "change_password_notification": MessageLookupByLibrary.simpleMessage(
             "We have send password recovery\ninstruction to your email"),
         "check_your_email":
@@ -94,6 +95,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "reset_password":
             MessageLookupByLibrary.simpleMessage("Reset password"),
         "schedule": MessageLookupByLibrary.simpleMessage("Schedule"),
+        "search": MessageLookupByLibrary.simpleMessage("Search"),
+        "search_places": MessageLookupByLibrary.simpleMessage("Search Places"),
         "sign_in": MessageLookupByLibrary.simpleMessage("Sign In"),
         "sign_in_now": MessageLookupByLibrary.simpleMessage("Sign in now"),
         "sign_in_now_description": MessageLookupByLibrary.simpleMessage(

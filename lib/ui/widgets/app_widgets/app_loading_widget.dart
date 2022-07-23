@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_application/lib.dart';
 
 class AppLoadingWidget extends StatelessWidget {
@@ -8,6 +9,7 @@ class AppLoadingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
+      color: Colors.transparent,
       child: ColorFiltered(
         colorFilter:
             ColorFilter.mode(context.colorScheme.secondary, BlendMode.srcATop),

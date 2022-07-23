@@ -10,9 +10,9 @@ import 'package:flutter_application/ui/widgets/app_widgets/app_error_widget.dart
 import 'package:flutter_application/ui/widgets/app_widgets/app_loading_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'widgets/body_content_calendar_widget.dart';
 import 'widgets/header_content_calender_widget.dart';
 import 'widgets/header_weekly_calender_widget.dart';
-import 'widgets/place_calendar_widget.dart';
 
 class CalendarPage extends StatefulWidget {
   static const routeName = 'CalendarPage';
@@ -65,8 +65,9 @@ class _CalendarPageState extends State<CalendarPage>
       body: BlocBuilder<CalendarBloc, CalendarState>(
         builder: (context, state) {
           return state.when(
-            (placeMap) {
-              return buildContent(placeMap: placeMap);
+            (placeMap, insideLoading) {
+              return buildContent(
+                  placeMap: placeMap, insideLoading: insideLoading);
             },
             loading: () => const AppLoadingWidget(),
             error: (error) => AppErrorWidget(
@@ -78,14 +79,19 @@ class _CalendarPageState extends State<CalendarPage>
     );
   }
 
-  Widget buildContent({required Map<String, PlaceModel> placeMap}) {
+  Widget buildContent(
+      {required Map<String, PlaceModel> placeMap, required insideLoading}) {
     return SafeArea(
       child: NestedScrollView(
         floatHeaderSlivers: true,
         headerSliverBuilder: (context, value) {
           return [
             SliverPersistentHeader(
-              delegate: HeaderWeeklyCalenderWidget(),
+              delegate: HeaderWeeklyCalenderWidget(onSelectedTime: (value) {
+                context
+                    .read<CalendarBloc>()
+                    .getPlaceScheduleWithDate(time: value);
+              }),
               floating: true,
               pinned: false,
             ),
@@ -96,20 +102,8 @@ class _CalendarPageState extends State<CalendarPage>
             )
           ];
         },
-        body: ListView.separated(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 20).copyWith(bottom: 20),
-            itemBuilder: (context, index) {
-              return PlaceCalendarWidget(
-                placeModel: placeMap.values.toList()[index],
-              );
-            },
-            separatorBuilder: (context, index) {
-              return const SizedBox(
-                height: 12,
-              );
-            },
-            itemCount: placeMap.values.length),
+        body: BodyContentCalendarWidget(
+            placeMap: placeMap, insideLoading: insideLoading),
       ),
     );
   }

@@ -18,21 +18,24 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CalendarState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(Map<String, PlaceModel> placeList) $default, {
+    TResult Function(Map<String, PlaceModel> placeList, bool insideLoading)
+        $default, {
     required TResult Function() loading,
     required TResult Function(dynamic error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(Map<String, PlaceModel> placeList)? $default, {
+    TResult Function(Map<String, PlaceModel> placeList, bool insideLoading)?
+        $default, {
     TResult Function()? loading,
     TResult Function(dynamic error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(Map<String, PlaceModel> placeList)? $default, {
+    TResult Function(Map<String, PlaceModel> placeList, bool insideLoading)?
+        $default, {
     TResult Function()? loading,
     TResult Function(dynamic error)? error,
     required TResult orElse(),
@@ -84,7 +87,7 @@ abstract class _$$CalendarStateDataCopyWith<$Res> {
   factory _$$CalendarStateDataCopyWith(
           _$CalendarStateData value, $Res Function(_$CalendarStateData) then) =
       __$$CalendarStateDataCopyWithImpl<$Res>;
-  $Res call({Map<String, PlaceModel> placeList});
+  $Res call({Map<String, PlaceModel> placeList, bool insideLoading});
 }
 
 /// @nodoc
@@ -101,12 +104,17 @@ class __$$CalendarStateDataCopyWithImpl<$Res>
   @override
   $Res call({
     Object? placeList = freezed,
+    Object? insideLoading = freezed,
   }) {
     return _then(_$CalendarStateData(
       placeList == freezed
           ? _value._placeList
           : placeList // ignore: cast_nullable_to_non_nullable
               as Map<String, PlaceModel>,
+      insideLoading == freezed
+          ? _value.insideLoading
+          : insideLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -114,7 +122,8 @@ class __$$CalendarStateDataCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CalendarStateData implements CalendarStateData {
-  const _$CalendarStateData(final Map<String, PlaceModel> placeList)
+  const _$CalendarStateData(
+      final Map<String, PlaceModel> placeList, this.insideLoading)
       : _placeList = placeList;
 
   final Map<String, PlaceModel> _placeList;
@@ -125,8 +134,11 @@ class _$CalendarStateData implements CalendarStateData {
   }
 
   @override
+  final bool insideLoading;
+
+  @override
   String toString() {
-    return 'CalendarState(placeList: $placeList)';
+    return 'CalendarState(placeList: $placeList, insideLoading: $insideLoading)';
   }
 
   @override
@@ -135,12 +147,16 @@ class _$CalendarStateData implements CalendarStateData {
         (other.runtimeType == runtimeType &&
             other is _$CalendarStateData &&
             const DeepCollectionEquality()
-                .equals(other._placeList, _placeList));
+                .equals(other._placeList, _placeList) &&
+            const DeepCollectionEquality()
+                .equals(other.insideLoading, insideLoading));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_placeList));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_placeList),
+      const DeepCollectionEquality().hash(insideLoading));
 
   @JsonKey(ignore: true)
   @override
@@ -150,33 +166,36 @@ class _$CalendarStateData implements CalendarStateData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(Map<String, PlaceModel> placeList) $default, {
+    TResult Function(Map<String, PlaceModel> placeList, bool insideLoading)
+        $default, {
     required TResult Function() loading,
     required TResult Function(dynamic error) error,
   }) {
-    return $default(placeList);
+    return $default(placeList, insideLoading);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(Map<String, PlaceModel> placeList)? $default, {
+    TResult Function(Map<String, PlaceModel> placeList, bool insideLoading)?
+        $default, {
     TResult Function()? loading,
     TResult Function(dynamic error)? error,
   }) {
-    return $default?.call(placeList);
+    return $default?.call(placeList, insideLoading);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(Map<String, PlaceModel> placeList)? $default, {
+    TResult Function(Map<String, PlaceModel> placeList, bool insideLoading)?
+        $default, {
     TResult Function()? loading,
     TResult Function(dynamic error)? error,
     required TResult orElse(),
   }) {
     if ($default != null) {
-      return $default(placeList);
+      return $default(placeList, insideLoading);
     }
     return orElse();
   }
@@ -217,10 +236,12 @@ class _$CalendarStateData implements CalendarStateData {
 }
 
 abstract class CalendarStateData implements CalendarState {
-  const factory CalendarStateData(final Map<String, PlaceModel> placeList) =
+  const factory CalendarStateData(
+          final Map<String, PlaceModel> placeList, final bool insideLoading) =
       _$CalendarStateData;
 
   Map<String, PlaceModel> get placeList => throw _privateConstructorUsedError;
+  bool get insideLoading => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$CalendarStateDataCopyWith<_$CalendarStateData> get copyWith =>
       throw _privateConstructorUsedError;
@@ -267,7 +288,8 @@ class _$CalendarStateLoading implements CalendarStateLoading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(Map<String, PlaceModel> placeList) $default, {
+    TResult Function(Map<String, PlaceModel> placeList, bool insideLoading)
+        $default, {
     required TResult Function() loading,
     required TResult Function(dynamic error) error,
   }) {
@@ -277,7 +299,8 @@ class _$CalendarStateLoading implements CalendarStateLoading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(Map<String, PlaceModel> placeList)? $default, {
+    TResult Function(Map<String, PlaceModel> placeList, bool insideLoading)?
+        $default, {
     TResult Function()? loading,
     TResult Function(dynamic error)? error,
   }) {
@@ -287,7 +310,8 @@ class _$CalendarStateLoading implements CalendarStateLoading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(Map<String, PlaceModel> placeList)? $default, {
+    TResult Function(Map<String, PlaceModel> placeList, bool insideLoading)?
+        $default, {
     TResult Function()? loading,
     TResult Function(dynamic error)? error,
     required TResult orElse(),
@@ -403,7 +427,8 @@ class _$CalendarStateError implements CalendarStateError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(Map<String, PlaceModel> placeList) $default, {
+    TResult Function(Map<String, PlaceModel> placeList, bool insideLoading)
+        $default, {
     required TResult Function() loading,
     required TResult Function(dynamic error) error,
   }) {
@@ -413,7 +438,8 @@ class _$CalendarStateError implements CalendarStateError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(Map<String, PlaceModel> placeList)? $default, {
+    TResult Function(Map<String, PlaceModel> placeList, bool insideLoading)?
+        $default, {
     TResult Function()? loading,
     TResult Function(dynamic error)? error,
   }) {
@@ -423,7 +449,8 @@ class _$CalendarStateError implements CalendarStateError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(Map<String, PlaceModel> placeList)? $default, {
+    TResult Function(Map<String, PlaceModel> placeList, bool insideLoading)?
+        $default, {
     TResult Function()? loading,
     TResult Function(dynamic error)? error,
     required TResult orElse(),

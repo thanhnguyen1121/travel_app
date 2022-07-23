@@ -12,6 +12,7 @@ import 'data/dto/dto.dart';
 import 'data/repositories/repositories.dart';
 import 'env.dart';
 import 'ui/blocs/calendar/calendar_bloc.dart';
+import 'ui/blocs/search/search_bloc.dart';
 
 Future initializeDependencies() async {
   Dio dio = Dio(BaseOptions(baseUrl: Env.instance.baseURL));
@@ -60,4 +61,6 @@ Future initializeDependencies() async {
   GetIt.instance.registerSingleton(HomeBloc());
 
   GetIt.instance.registerSingleton(CalendarBloc());
+
+  GetIt.instance.registerSingleton(SearchBloc());
 }

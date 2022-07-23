@@ -4,7 +4,7 @@ import 'package:flutter_application/data/dto/place_dto.dart';
 import 'package:flutter_application/gen/assets.gen.dart';
 import 'package:flutter_application/generated/l10n.dart';
 import 'package:flutter_application/ui/blocs/theme/theme_bloc.dart';
-import 'package:flutter_application/ui/pages/home/place_view/place_view_page.dart';
+import 'package:flutter_application/ui/pages/place_view/place_view_page.dart';
 import 'package:flutter_application/utils/context_extension.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:readmore/readmore.dart';
