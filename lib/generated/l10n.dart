@@ -619,6 +619,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Messages`
+  String get message {
+    return Intl.message(
+      'Messages',
+      name: 'message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search for chats & messages`
+  String get hint_search_message {
+    return Intl.message(
+      'Search for chats & messages',
+      name: 'hint_search_message',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -7,9 +7,13 @@ import '../../../constants/app_colors.dart';
 class AppTitleAndViewAllWidget extends StatefulWidget {
   final String title;
   final bool showViewAll;
+  final Widget? trailingIcon;
 
   const AppTitleAndViewAllWidget(
-      {Key? key, required this.title, this.showViewAll = true})
+      {Key? key,
+      required this.title,
+      this.showViewAll = true,
+      this.trailingIcon})
       : super(key: key);
 
   @override
@@ -62,6 +66,8 @@ class _AppTitleAndViewAllWidgetState extends State<AppTitleAndViewAllWidget>
               style: context.textTheme.subtitle2?.copyWith(
                   color: AppColors.h0D6EFD, fontWeight: FontWeight.w300),
             )
+          else if (widget.trailingIcon != null)
+            widget.trailingIcon!
         ],
       ),
     );

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application/gen/assets.gen.dart';
+import 'package:flutter_application/generated/l10n.dart';
 import 'package:flutter_application/ui/widgets/design_system/search_text_form_field.dart';
 
 class HeaderSearchWidget extends SliverPersistentHeaderDelegate {
@@ -20,9 +21,10 @@ class HeaderSearchWidget extends SliverPersistentHeaderDelegate {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
       child: SearchTextFormField(
+        hint: S.current.search_places,
         textEditingController: searchTextController,
         onChanged: _onSearchChanged,
-        suffixIcon: Assets.icons.icMicrophone.svg(width: 24, height: 24),
+        prefixIcon: Assets.icons.icSearch.svg(width: 24, height: 24),
       ),
     );
   }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application/constants/app_colors.dart';
-import 'package:flutter_application/gen/assets.gen.dart';
 import 'package:flutter_application/utils/context_extension.dart';
 
 class SearchTextFormField extends FormField<String> {
@@ -75,53 +74,57 @@ class SearchTextFormField extends FormField<String> {
                         minWidth: 60,
                         maxHeight: 56,
                         minHeight: 56),
-                    prefixIcon: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const SizedBox(
-                          width: 12,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Assets.icons.icSearch.svg(
-                              width: 24, height: 24, color: AppColors.h7D848D),
-                        ),
-                      ],
-                    ),
-                    suffixIcon: Material(
-                      type: MaterialType.transparency,
-                      child: Row(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 12),
-                            child: VerticalDivider(
-                              width: 2,
-                              color: AppColors.h7D848D,
-                              thickness: 1,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 4,
-                          ),
-                          Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 12),
-                            child: Ink(
-                              decoration:
-                                  const BoxDecoration(shape: BoxShape.circle),
-                              child: InkResponse(
-                                radius: 24,
-                                child: suffixIcon,
-                                onTap: () {
-                                  state.setState(() {
-                                    isPassword = !isPassword;
-                                  });
-                                },
+                    prefixIcon: prefixIcon != null
+                        ? Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const SizedBox(
+                                width: 12,
                               ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: prefixIcon,
+                              ),
+                            ],
+                          )
+                        : null,
+                    suffixIcon: suffixIcon != null
+                        ? Material(
+                            type: MaterialType.transparency,
+                            child: Row(
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 12),
+                                  child: VerticalDivider(
+                                    width: 2,
+                                    color: AppColors.h7D848D,
+                                    thickness: 1,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 4,
+                                ),
+                                Container(
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 12),
+                                  child: Ink(
+                                    decoration: const BoxDecoration(
+                                        shape: BoxShape.circle),
+                                    child: InkResponse(
+                                      radius: 24,
+                                      child: suffixIcon,
+                                      onTap: () {
+                                        state.setState(() {
+                                          isPassword = !isPassword;
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
+                          )
+                        : null,
                     errorText: state.errorText,
                   ),
             );

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/data/dto/place_dto.dart';
 import 'package:flutter_application/ui/blocs/calendar/calendar_bloc.dart';
 import 'package:flutter_application/ui/blocs/home/home_bloc.dart';
+import 'package:flutter_application/ui/blocs/message/message_bloc.dart';
 import 'package:flutter_application/ui/blocs/search/search_bloc.dart';
 import 'package:flutter_application/ui/pages/home/home_page.dart';
+import 'package:flutter_application/ui/pages/messages/message_detail/message_detail_page.dart';
 import 'package:flutter_application/ui/pages/place_detail/place_detail_page.dart';
 import 'package:flutter_application/ui/pages/place_view/place_view_page.dart';
 import 'package:flutter_application/utils/navigator_support.dart';
@@ -29,6 +31,7 @@ class _MainNavigatorState extends State<MainNavigator> {
         BlocProvider.value(value: GetIt.instance.get<HomeBloc>()),
         BlocProvider.value(value: GetIt.instance.get<CalendarBloc>()),
         BlocProvider.value(value: GetIt.instance.get<SearchBloc>()),
+        BlocProvider.value(value: GetIt.instance.get<MessageBloc>()),
       ],
       child: NavigatorSupport(
         initialRoute: MainPage.routerName,
@@ -45,6 +48,10 @@ class _MainNavigatorState extends State<MainNavigator> {
               return AppPageRoute(
                 builder: (context) => PlaceViewPage(
                     data: settings.arguments as Tuple2<List<String>, int>),
+              );
+            case MessageDetailPage.routeName:
+              return AppPageRoute(
+                builder: (context) => const MessageDetailPage(),
               );
             case MainPage.routerName:
               return AppPageRoute(

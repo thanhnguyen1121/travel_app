@@ -2,6 +2,7 @@ import 'package:auth_nav/auth_nav.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_application/ui/blocs/blocs.dart';
 import 'package:flutter_application/ui/blocs/home/home_bloc.dart';
+import 'package:flutter_application/ui/blocs/message/message_bloc.dart';
 import 'package:flutter_application/ui/blocs/theme/theme_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:oauth2_dio/oauth2_dio.dart';
@@ -63,4 +64,6 @@ Future initializeDependencies() async {
   GetIt.instance.registerSingleton(CalendarBloc());
 
   GetIt.instance.registerSingleton(SearchBloc());
+
+  GetIt.instance.registerSingleton(MessageBloc());
 }

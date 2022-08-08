@@ -7,6 +7,7 @@ import 'package:flutter_application/ui/pages/messages/message_page.dart';
 import 'package:flutter_application/ui/pages/profile/profile_page.dart';
 import 'package:flutter_application/ui/pages/search/search_page.dart';
 import 'package:flutter_application/ui/widgets/bottom_navigation/bottom_navigation.dart';
+import 'package:flutter_application/utils/context_extension.dart';
 
 class MainPage extends StatelessWidget {
   static const String routerName = "MainPage";
@@ -29,6 +30,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.theme.backgroundColor,
       body: PageView(
         controller: pageController,
         onPageChanged: (index) {

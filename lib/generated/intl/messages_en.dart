@@ -48,8 +48,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Forgot password"),
         "have_account":
             MessageLookupByLibrary.simpleMessage("Already have an account "),
+        "hint_search_message":
+            MessageLookupByLibrary.simpleMessage("Search for chats & messages"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "home_page": MessageLookupByLibrary.simpleMessage("Home Page"),
+        "message": MessageLookupByLibrary.simpleMessage("Messages"),
         "messages": MessageLookupByLibrary.simpleMessage("Messages"),
         "my_schedule": MessageLookupByLibrary.simpleMessage("My Schedule"),
         "no_data": MessageLookupByLibrary.simpleMessage("No data"),

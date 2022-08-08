@@ -55,6 +55,8 @@
   "schedule": "Schedule",
   "search": "Search",
   "cancel": "Cancel",
-  "search_places": "Search Places"
+  "search_places": "Search Places",
+  "message": "Messages",
+  "hint_search_message": "Search for chats & messages"
 
 }

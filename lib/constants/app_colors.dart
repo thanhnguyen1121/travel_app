@@ -16,6 +16,12 @@ class AppColors {
   static const Color hB4BCC9 = Color(0xffB4BCC9);
   static const Color hAFB8C6 = Color(0xffAFB8C6);
   static const Color h303030 = Color(0xff303030);
+  static const Color h19B000 = Color(0xff19B000);
+  static const Color h7B7474 = Color(0xff7B7474);
+  static const Color hFFD336 = Color(0xffFFD336);
+  static const Color hFE2352 = Color(0xffFE2352);
+  static const Color h262A36 = Color(0xff262A36);
+  static const Color hBDC6D3 = Color(0xffBDC6D3);
 }
 
 class AppImages {
@@ -35,5 +41,14 @@ class AppImages {
     Assets.images.imgDemoThirteen.path,
     Assets.images.imgDemoFourteen.path,
     Assets.images.imgDemoFifteen.path
+  ];
+}
+
+class AppUserImage {
+  static List<String> imageList = [
+    Assets.images.imgUser.path,
+    Assets.images.imgUserOne.path,
+    Assets.images.imgUserTwo.path,
+    Assets.images.imgUserThree.path,
   ];
 }

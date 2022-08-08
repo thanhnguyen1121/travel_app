@@ -3,6 +3,7 @@ import 'package:flutter_application/ui/blocs/home/home_bloc.dart';
 import 'package:flutter_application/ui/blocs/home/home_state.dart';
 import 'package:flutter_application/ui/widgets/app_widgets/app_error_widget.dart';
 import 'package:flutter_application/ui/widgets/app_widgets/app_loading_widget.dart';
+import 'package:flutter_application/utils/context_extension.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'widgets/header_widget.dart';
@@ -28,24 +29,27 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return SafeArea(
-      child: BlocBuilder<HomeBloc, HomeState>(
-        builder: (context, state) {
-          return state.map(
-            (value) {
-              return Column(
-                children: const [
-                  HeaderWidget(),
-                  ListPlaceWidget(),
-                ],
-              );
-            },
-            loading: (_) => const AppLoadingWidget(),
-            error: (error) => AppErrorWidget(
-              message: error.toString(),
-            ),
-          );
-        },
+    return Scaffold(
+      backgroundColor: context.theme.backgroundColor,
+      body: SafeArea(
+        child: BlocBuilder<HomeBloc, HomeState>(
+          builder: (context, state) {
+            return state.map(
+              (value) {
+                return Column(
+                  children: const [
+                    HeaderWidget(),
+                    ListPlaceWidget(),
+                  ],
+                );
+              },
+              loading: (_) => const AppLoadingWidget(),
+              error: (error) => AppErrorWidget(
+                message: error.toString(),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
