@@ -9,7 +9,7 @@ class ThemeBloc extends Cubit<ThemeState> {
       : super(ThemeState(
             lightTheme: light(),
             dartTheme: dark(),
-            enableDarkMode: true,
+            enableDarkMode: false,
             themeMode: ThemeMode.dark));
 
   void changeTheme() {
