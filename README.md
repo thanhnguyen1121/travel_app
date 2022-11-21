@@ -168,6 +168,12 @@ For IOS:
 - Use flutter intl and flutter_localizations
 
 # Application preview
-![Application Image](https://github.com/thanhnguyen1121/travel_app/tree/master/assets/demo/dark_mode.png?raw=true)
 
-![Application Image](https://github.com/thanhnguyen1121/travel_app/tree/master/assets/demo/light_mode.png?raw=true)
+[//]: # (![Application Image]&#40;https://github.com/thanhnguyen1121/travel_app/tree/master/assets/demo/dark_mode.png?raw=true&#41;)
+
+[//]: # ()
+[//]: # (![Application Image]&#40;https://github.com/thanhnguyen1121/travel_app/tree/master/assets/demo/light_mode.png?raw=true&#41;)
+
+![Optional Text](../master/assets/demo/light_mode.png?raw=true)
+
+![Optional Text](../master/assets/demo/dark_mode.png?raw=true)
